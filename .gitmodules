@@ -1,0 +1,3 @@
+[submodule "cdash"]
+	path = cdash
+	url = https://github.com/Kitware/CDash.git
