@@ -1,7 +1,7 @@
-############################################################
-# Dockerfile to run cdash
-############################################################
-FROM ubuntu:14.04
+###############################################################################
+### Dockerfile to run cdash ###################################################
+###############################################################################
+FROM ubuntu:15.04
 MAINTAINER Julien Graziano <julien.graziano@arobas-music.com>
 # Install dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
