@@ -7,7 +7,9 @@
 
 To customize your CDash service, mount your **CDash** config file to
 
-`/srv/cdash/cdash/config.local.php`. Example:
+`/srv/cdash/cdash/config.local.php`.
+
+Example:
 
 ```shell
 > cat > $PWD/config.local.php << EOF
@@ -26,7 +28,9 @@ See [CDash setup documentation](http://public.kitware.com/Wiki/CDash:Installatio
 ### SSL certificate
 
 To use your own ssl certificate, mount your certificate et certificate key files
-to `/srv/cdash-ssl-cert.crt` and `/srv/cdash-ssl-cert.key`. Example:
+to `/srv/cdash-ssl-cert.crt` and `/srv/cdash-ssl-cert.key`.
+
+Example:
 
 ```shell
 > docker run \
