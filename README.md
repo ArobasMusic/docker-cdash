@@ -1,10 +1,12 @@
-### Setup
+### Setup
 ```shell
 > docker pull arobasmusic/cdash
 ```
 
 ### Configuration
+
 To customize your CDash service, mount your **CDash** config file to
+
 `/srv/cdash/cdash/config.local.php`. Example:
 
 ```shell
