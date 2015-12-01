@@ -1,0 +1,34 @@
+#!/bin/sh
+set -e
+
+ARGV="$@"
+
+## The locale used by some modules like mod_dav
+export LANG=C
+export APACHE_LOG_DIR="/var/log/apache2"
+export APACHE_LOCK_DIR="/tmp"
+export APACHE_RUN_DIR="/tmp"
+export APACHE_PID_FILE="/tmp/apache2.pif"
+
+# the path to your httpd binary, including options if necessary
+HTTPD="/usr/sbin/apache2"
+
+# Set this variable to a command that increases the maximum
+# number of file descriptors allowed per child process. This is
+# critical for configurations that use many file descriptors,
+# such as mass vhosting, or a multithreaded server.
+ULIMIT_MAX_FILES="${APACHE_ULIMIT_MAX_FILES:-ulimit -n 8192}"
+
+# Set the maximum number of file descriptors allowed per child process.
+if [ "x$ULIMIT_MAX_FILES" != "x" ] && [ `id -u` -eq 0 ];
+	then
+    if ! $ULIMIT_MAX_FILES;
+		then
+        echo "Setting ulimit failed. See README.Debian for more information." >&2
+    fi
+fi
+
+rm -fr /tmp/apache2.pid
+rm -fr /tmp/apache2.lock
+
+exec "$HTTPD" -d /etc/apache2 -f apache2.conf -e info -D FOREGROUND
