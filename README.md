@@ -25,24 +25,6 @@ EOF
 
 See [CDash setup documentation](http://public.kitware.com/Wiki/CDash:Installation#Configuration) for more details.
 
-### SSL certificate
-
-To use your own ssl certificate, mount your certificate et certificate key files
-to `/srv/cdash-ssl-cert.crt` and `/srv/cdash-ssl-cert.key`.
-
-Example:
-
-```shell
-> docker run \
-    -P \
-    -d \
-    --link mysql:db \
-    -v "$PWD/config.local.php":"/srv/cdash/cdash/config.local.php" \
-    -v "$PWD/your-certificate.crt":"/srv/cdash-ssl-cert.crt" \
-    -v "$PWD/your-certificate.key":"/srv/cdash-ssl-cert.key" \
-    arobasmusic/cdash:2.2.2
-```
-
 ### Other available volumes
 
 - `/srv/cdash/backup`
